@@ -20,4 +20,4 @@ public:
 	Summator();
 };
 
-#endif 
+#endif // SUMMATOR_H
