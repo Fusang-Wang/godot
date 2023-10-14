@@ -10,6 +10,7 @@ void Timertest::_notification(int p_notification) {
         case NOTIFICATION_READY:
         {
 			_check_input_map();
+			// 设置process状态（必须）
             set_physics_process(true);
             set_process(false);
             print_line("NOTIFICATION_READY");
@@ -18,6 +19,7 @@ void Timertest::_notification(int p_notification) {
         case NOTIFICATION_PHYSICS_PROCESS:
         {
 			timer_count += 1;
+			// 判断是否有按钮事件
             if (Input::get_singleton()->is_action_just_pressed("test_button"))
 			{
                 print_line(timer_count);
@@ -37,6 +39,7 @@ void Timertest::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("_notification", "value"), &Timertest::_notification);
 }
 
+// 检查是否有特定的action以免报错
 void Timertest::_check_input_map() {
 	if (!InputMap::get_singleton()->has_action("test_button"))
 	{
