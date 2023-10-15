@@ -34,9 +34,15 @@ void Timertest::_notification(int p_notification) {
     }
 }
 
+int Timertest::get_timer_count() const {
+	ERR_READ_THREAD_GUARD_V(0);
 
-void Timertest::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("_notification", "value"), &Timertest::_notification);
+	return timer_count;
+}
+
+void Timertest::set_timer_count(const int &p_timer_count) {
+	ERR_THREAD_GUARD;
+	timer_count = p_timer_count;
 }
 
 // 检查是否有特定的action以免报错
@@ -48,6 +54,17 @@ void Timertest::_check_input_map() {
 	}
 
 }
+
+void Timertest::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("_notification", "value"), &Timertest::_notification);
+    ClassDB::bind_method(D_METHOD("_check_input_map"), &Timertest::_check_input_map);
+    ClassDB::bind_method(D_METHOD("get_timer_count"), &Timertest::get_timer_count);
+    ClassDB::bind_method(D_METHOD("set_timer_count", "p_timer_count"), &Timertest::set_timer_count);
+    ADD_GROUP("TimerCount", "");
+	ADD_PROPERTY(PropertyInfo(Variant::INT, "p_timer_count", PROPERTY_HINT_LINK), "get_timer_count", "set_timer_count");
+}
+
+
 
 Timertest::Timertest() {
 	timer_count = 0;
