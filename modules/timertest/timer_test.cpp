@@ -59,9 +59,9 @@ void Timertest::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("_notification", "value"), &Timertest::_notification);
     ClassDB::bind_method(D_METHOD("_check_input_map"), &Timertest::_check_input_map);
     ClassDB::bind_method(D_METHOD("get_timer_count"), &Timertest::get_timer_count);
-    ClassDB::bind_method(D_METHOD("set_timer_count", "p_timer_count"), &Timertest::set_timer_count);
+    ClassDB::bind_method(D_METHOD("set_timer_count", "timer_count"), &Timertest::set_timer_count);
     ADD_GROUP("TimerCount", "");
-	ADD_PROPERTY(PropertyInfo(Variant::INT, "p_timer_count", PROPERTY_HINT_LINK), "get_timer_count", "set_timer_count");
+	ADD_PROPERTY(PropertyInfo(Variant::INT, "timer_count", PROPERTY_HINT_LINK), "set_timer_count", "get_timer_count");
 }
 
 
