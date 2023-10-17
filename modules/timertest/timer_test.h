@@ -10,15 +10,16 @@
 class Timertest : public Node2D {
 	GDCLASS(Timertest, Node2D);
 
-	int timer_count;
+	mutable int timer_count;
 
 protected:
 	static void _bind_methods();
-	static void _check_input_map();
 
 public:
+	void _check_input_map();
 	void _notification(int p_notification);
-
+	void set_timer_count(const int &p_timer_count);
+	int get_timer_count() const;
 	Timertest();
 };
 
