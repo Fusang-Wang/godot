@@ -1,0 +1,64 @@
+name: 任务/需求
+description: 为项目添加一个新的任务或需求
+title: "[需求]: "
+labels: [需求]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: "### 任务/需求描述"
+  - type: textarea
+    id: description
+    attributes:
+      label: 描述
+      description: 请详细描述这个任务或需求。
+      placeholder: 详细描述...
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: "### 目标/期望"
+  - type: checkboxes
+    id: goals
+    attributes:
+      label: 选择目标
+      options:
+        - label: 目标1
+        - label: 目标2
+        - label: 目标3
+
+  - type: markdown
+    attributes:
+      value: "### 背景信息"
+  - type: textarea
+    id: background
+    attributes:
+      label: 背景
+      description: 请提供与此任务或需求相关的背景信息，例如为什么这个任务或需求是必要的。
+      placeholder: 背景描述...
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: "### 参考资料"
+  - type: input
+    id: reference
+    attributes:
+      label: 链接
+      placeholder: 输入参考链接...
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: "### 其他备注"
+  - type: textarea
+    id: remarks
+    attributes:
+      label: 备注
+      placeholder: 输入其他备注...
+    validations:
+      required: false
